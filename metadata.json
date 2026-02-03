@@ -1,0 +1,6 @@
+
+{
+  "name": "Almoxarifado Inteligente",
+  "description": "Sistema completo de gerenciamento de almoxarifado com controle de estoque, fornecedores, entradas e saídas baseado em fluxos operacionais de planilhas.",
+  "requestFramePermissions": []
+}
