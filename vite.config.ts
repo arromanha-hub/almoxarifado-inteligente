@@ -19,6 +19,18 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, './src'),
         'recharts': 'recharts'
       }
-    }
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom'],
+            'vendor-recharts': ['recharts'],
+            'vendor-utils': ['jspdf', 'jspdf-autotable', 'lucide-react'],
+          },
+        },
+      },
+      chunkSizeWarningLimit: 1000,
+    },
   };
 });
