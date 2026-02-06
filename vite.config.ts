@@ -17,16 +17,20 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-        'recharts': 'recharts'
       }
     },
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            'vendor-react': ['react', 'react-dom'],
-            'vendor-recharts': ['recharts'],
-            'vendor-utils': ['jspdf', 'jspdf-autotable', 'lucide-react'],
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('recharts')) {
+                return 'vendor-recharts';
+              }
+              if (id.includes('jspdf') || id.includes('lucide-react')) {
+                return 'vendor-utils';
+              }
+            }
           },
         },
       },
